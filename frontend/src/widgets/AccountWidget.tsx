@@ -3,7 +3,6 @@ import TransferIcon from "@mui/icons-material/SwapHoriz";
 import HistoryIcon from "@mui/icons-material/History";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Button } from "../components/Button/Button";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { IAccount } from "../hooks/useFetchAccounts";
 interface AccountCardProps {
 	userAccount: IAccount | undefined;
@@ -17,29 +16,12 @@ const generateAccountNumber = (length: number = 10): string => {
   return accountNumber;
 };
 
-// export const generateMockAccounts = (count: number): AccountCardProps[] => {
-//   const accountTypes = ["Savings", "Checking", "Business", "Joint"];
-//   const mockAccounts: AccountCardProps[] = [];
-
-//   for (let i = 0; i < count; i++) {
-//     const accountType = accountTypes[Math.floor(Math.random() * accountTypes.length)];
-//     const accountNumber = generateAccountNumber();
-//     const balance = parseFloat((Math.random() * 10000).toFixed(2));
-
-//     mockAccounts.push({ accountType, accountNumber, balance });
-//   }
-
-//   return mockAccounts;
-// };
-
-// const AccountWidget: React.FC<AccountCardProps> = ({ accountType, accountNumber, balance }: AccountCardProps) => {
 const AccountWidget: React.FC<AccountCardProps> = ({ userAccount: account }: AccountCardProps) => {
 
   if (!account) {
     return null;
   }
-  // const client = account as Client
-  // const { accountType, accountNumber, balance } = generateMockAccounts(1)[0];
+
   const firstDigit = account.bban.slice(0, 2);
   const lastDigit1 = account.bban.slice(-4);
   const lastDigit2 = account.bban.slice(-8, -4);

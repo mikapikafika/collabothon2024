@@ -26,11 +26,19 @@ interface IMessage {
   type?: string;
 }
 
+const mockConversation: IMessage[] = [
+  { text: "Hello! How can I assist you today?", isUser: false },
+  { text: "What are the current loan offers?", isUser: true },
+  { text: "We have home loans, car loans, and personal loans available.", isUser: false },
+  { text: "Tell me more about the home loan.", isUser: true },
+  { text: "Our home loan offers the best interest rates in the market.", isUser: false },
+];
+
 export const Chatbot = ({ data, isChatbotVisible }: IProps) => {
   const [isChatActive, setIsChatActive] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setLoading] = useState(false);
-  const [messages, setMessages] = useState<IMessage[]>([{ text: "Hello! How can I assist you today?", isUser: false }]);
+  const [messages, setMessages] = useState<IMessage[]>(mockConversation);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
